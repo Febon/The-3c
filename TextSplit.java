@@ -4,6 +4,9 @@
  *Copyright 2017 Karagianni/team java autocorrect
  */
 
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,25 +21,47 @@ public class TextSplit {
 
 		Scanner input = new Scanner(System.in);           //scanner object
 		System.out.println("Γράψτε το κείμενό σας εδώ:");
-		String text = input.nextLine();
+		String text = input.nextLine();                  //user's text
+
+
 	}
 	protected static void splitIntoWords(String txt){
 
-		String[] symbols={",","/","'",".","[","]","(",")","!","<",">",";",":","-"};
-		String[] temp = txt.split(" ");
-		String[] words;                                                             //Array for the separate words
-		for (int i=0; i<symbols.length; i++) {
-			words=splitString(temp, symbols[i]);
+		ArrayList<String> words = new ArrayList<String>();
+		String[] a;
+		a = txt.split(" ");
+
+		for (int i=0; i<a.length; i++) {
+
+			words.add(a[i]);
 		}
+		char[] symb = {',','.','<','>','?',':',';','\'','"','(',')','{','}','[',']','/','\\','!','@','%','$','#','&','*','~','-','_','`','+','=','0','1','2','3','4','5','6','7','8','9'};
 
-	}
-	    /**Splits string where symb is found*/
-		protected static String[] splitString(String[] arr,String symb) {
-			String[] splt=null;
-			for (int i=0; i<arr.length; i++) {
+		for (int i = 0; i<words.size(); i++) {
+			for (int j = 0; j<words.get(i).length(); j++) {
+				for (int z = 0;  z<symb.length; z++) {
 
-				splt=arr[i].split(symb);
+					if (words.get(i).charAt(j) == symb[z]) {
+
+						String[] splt = words.get(i).split(String.valueOf(symb[z]));
+						words = moveWords(words,i,splt[0],splt[1]);
+						break;
+					}
+				}
 			}
-			return splt;
 		}
+	}
+	protected static ArrayList<String> moveWords(ArrayList<String> arr,int pointer,String word1,String word2) {
+
+		for(int i = arr.size()+1; i>pointer+1; i--) {
+
+			arr.add(i,arr.get(i-1));
+		}
+		arr.add(pointer,word1);
+		arr.add(pointer+1,word2);
+		return arr;
+	}
+
+
+
 }

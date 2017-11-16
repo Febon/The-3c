@@ -91,14 +91,22 @@ public class Comparison {
 		int[][] LetterCombinations = createLetterCombinations(SplitWord2.length );
 		String[] CombinationArray = convertIntToString(LetterCombinations);
 		String check="false";
+		String flag = "false";
 		int i=0;
+		if ((creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length-2), word2, word1, CombinationArray[i]) + "").equals("true") && word1.length()!=word2.length()) {
+			check="true";
+			flag = "true";
+
+		}
 		while (i<SplitWord2.length && check.equals("false")){
 			Object a = creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length-2), word2, word1, CombinationArray[i]);
 		 	check = a + "";
 			i++;
 		}
-		if (check.equals("true")) {
+		if (check.equals("true") && flag.equals("false")) {
 			return ((float)word2.length() - 1)/(float)word1.length();
+		} else if(flag.equals("true")) {
+			return ((float)word2.length())/(float)word1.length();
 		}
 
 		return precision;
@@ -198,13 +206,18 @@ public class Comparison {
 	public static List<String> creatingConditionList(int length) {
 		List<String> ConditionList = new ArrayList<>();
 		ConditionList.add("\".*\" +  Comparison.methodForSpliting(word2)[combination[0");
-		for (int i=1;i<length;i++){
+		for (int i=1;i<length-1;i++){
 			ConditionList.add(ConditionList.get(i-1)+ "]] + " + ConditionList.get(0)+ " + " + i);
 		}
 
-		for (int i=0;i<length;i++){
+		for (int i=0;i<length-1;i++){
 			ConditionList.set(i, ConditionList.get(i) +"]] + \".*\"");
 		}
+		ConditionList.add("\".*\" +  Comparison.methodForSpliting(word2)[0");
+		for (int i=1;i<length-1;i++){
+			ConditionList.set(length-1,(ConditionList.get(length-1)+ "]] + " + ConditionList.get(0)+ " + " + i));
+		}
+
 		return ConditionList;
 
 	}

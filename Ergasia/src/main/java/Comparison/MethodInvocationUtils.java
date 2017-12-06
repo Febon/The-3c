@@ -3,9 +3,6 @@ package Comparison;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
-import javax.tools.FileObject;
-import javax.tools.ForwardingJavaFileManager;
-import javax.tools.SimpleJavaFileObject;
 
 /**
  * Utility methods not directly related to the RuntimeCompiler

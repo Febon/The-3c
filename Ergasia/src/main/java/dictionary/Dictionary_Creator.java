@@ -38,6 +38,7 @@ public class Dictionary_Creator {
 			String line = null;
 			String previousLetter = "";
 			int i = 0;
+			@SuppressWarnings("unused")
 			int letter = 0;
 			int previous = 0;
 			while ((line = br.readLine()) != null) {

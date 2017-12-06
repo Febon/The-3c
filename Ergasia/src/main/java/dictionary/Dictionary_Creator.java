@@ -3,6 +3,7 @@ package dictionary;
 import java.util.Scanner;
 
 import Comparison.RunComparison;
+import audio.RunIou;
 import suggestion.Suggestion;
 import textSplit.TextSplit;
 
@@ -76,6 +77,7 @@ public class Dictionary_Creator {
 		if(!(TextSplit.symbols.contains(givenWord.charAt(0)))) {
 			answer = RunComparison.totalComparison(givenWord);
 			if (!answer) {
+				RunIou.playIou(); //for fun
 				float percentage;
 				String letter = givenWord.substring(0,1);
 				for (int i = numberOfWords.get(letter)[0] ; i < numberOfWords.get(letter)[1];i++) {

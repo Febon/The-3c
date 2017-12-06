@@ -19,11 +19,13 @@ import suggestion.Suggestion;
  */
 
 public class TextSplit {
+	
 	public static Map<Integer,String> textForCorrection = new HashMap<Integer,String>();
 	public static Map<String,Suggestion> correctedText= new HashMap<String,Suggestion>();
 	public static Character[] symb = {',','.','<','>','?',':',';','\'','"','(',')','{','}','[',']','/','\\','!','@','%','$','#','&','*','~','-','_','`','+','=','0','1','2','3','4','5','6','7','8','9'};
 	public static List<Character> symbols = Arrays.asList(symb);
-	protected static void splitIntoWords(String txt){
+	
+	public static void splitIntoWords(String txt){
 
 		String[] a = txt.split(" ");
 
@@ -75,6 +77,7 @@ public class TextSplit {
 			}
 		}
 	}
+	
 	protected static void Extra(int pointer,String[] array, char containedCharacter, String location) {
 			int extraSpace = 1;
 			List<String> list = Arrays.asList(array);
@@ -121,6 +124,7 @@ public class TextSplit {
 			correctedText.put(array[i], new Suggestion(array[i], null, null, null));
 		}
 	}
+	
 	public static List<String> addCharacter(int extraSpace, List<String> list, char containedCharacter) {
 		for (int i = 0; i < extraSpace; i++) {
 			list.set(i*2,list.get(i));
@@ -131,6 +135,7 @@ public class TextSplit {
 		}
 		return list;
 	}
+	
 	public static List<String> addCharacterLeftOrRight(int extraSpace, List<String> list, char containedCharacter, String position) {
 		if(position.equals("left")){
 			for(int i = list.size(); i>1; i--) {

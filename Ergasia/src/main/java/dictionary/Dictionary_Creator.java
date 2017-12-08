@@ -108,4 +108,6 @@ public class Dictionary_Creator {
 		
 		return numberOfWordsTemporary;
 	}
+	
 }
+

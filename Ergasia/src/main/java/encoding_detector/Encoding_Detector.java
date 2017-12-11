@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import org.mozilla.universalchardet.UniversalDetector;
 
 public class Encoding_Detector {
-	//public static String sampleData(byte s) {
 	 public static String encoding_Detector(String path) throws java.io.IOException {
 		 byte[] buf = new byte[4096];
 		

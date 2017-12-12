@@ -32,7 +32,7 @@ public class Dictionary_Creator {
 	public static final Map<String, Float> dic2 = new HashMap<String, Float>();
 	/** The following map is used to save the number of words in the dictionary in each letter.
 	 *  This map was created in order to parse throw the dic1 map starting by a specified letter.
-	 *  This maps value is a two dimentiona array cntaining the first an last row eich letter is found.
+	 *  This maps value is a two array containing the first an last row eich letter is found.
 	 */
 	public static Map<String, Integer[]>  numberOfWords = new HashMap<String, Integer[]>();
 
@@ -55,15 +55,12 @@ public class Dictionary_Creator {
 			String line = null;
 			String previousLetter = "";
 			int i = 0;
-			@SuppressWarnings("unused")
-			int letter = 0;
 			int previous = 0;
 			while ((line = br.readLine()) != null) {
 				dic1.put(line.substring(0,1) + i,line);
 				dic2.put(line.substring(0,1) + i, (float)0);
 				if(!(line.substring(0,1).equals(previousLetter)) && (i!=0)) {
 					numberOfWords.put(previousLetter ,new Integer[] {previous, i});
-					letter++;
 					previous = i;
 				}
 				previousLetter = line.substring(0,1);

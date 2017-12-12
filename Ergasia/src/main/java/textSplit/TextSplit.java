@@ -19,7 +19,12 @@ import suggestion.Suggestion;
  */
 
 public class TextSplit {
-	
+	/**The following map is used to save the txt document in the same order that it was given.
+	 *  This is done because in order to save storage we will be converting all the letters 
+	 *  in the given text into lower case. So in order to change the appropriate letters into 
+	 *  upper case letters when returning the text corrected it is essential that we same the 
+	 *  exact position the dots are.
+	 */
 	public static Map<Integer,String> textForCorrection = new HashMap<Integer,String>();
 	public static Map<String,Suggestion> correctedText= new HashMap<String,Suggestion>();
 	public static Character[] symb = {',','.','<','>','?',':',';','\'','"','(',')','{','}','[',']','/','\\','!','@','%','$','#','&','*','~','-','_','`','+','=','0','1','2','3','4','5','6','7','8','9'};
@@ -31,10 +36,14 @@ public class TextSplit {
 
 		for (int i=0; i<a.length; i++) {
 
-			textForCorrection.put(i,a[i]);
-			correctedText.put(a[i], new Suggestion(a[i], null, null, null));
+			textForCorrection.put(i,a[i].toLowerCase());
+			correctedText.put(a[i], new Suggestion(a[i].toLowerCase(), null, null, null));
 		}
 		Arrays.sort(symb);
+		
+		
+		//LATHOS
+		
 		for (int i = 0; i <textForCorrection.size(); i++) {
 			for(int z = 0; z < symb.length; z++) {
 				if (textForCorrection.get(i).contains( ".*" + symb[z] + ".*" )) {
@@ -42,35 +51,41 @@ public class TextSplit {
 					String currentWord = textForCorrection.get(i);
 					if (!(currentWord.substring(0,1).equals(String.valueOf(symb[z])) || currentWord.substring(currentWord.length()-1,currentWord.length()).equals(String.valueOf(symb[z])))){
 						
-						Extra(i, splt,symb[z], "middle");
+						Extra(i, splt, symb[z], "middle");
 						
 					} else if (currentWord.substring(0,1).equals(String.valueOf(symb[z])) && !(currentWord.substring(1,currentWord.length()).contains(".*" + String.valueOf(symb[z]) + ".*"))) {
 						
-						Extra(i, splt,symb[z], "left");
+						Extra(i, splt, symb[z], "left");
 						
 					} else if(currentWord.substring(currentWord.length()-1,currentWord.length()).equals(String.valueOf(symb[z])) && !(currentWord.substring(0,currentWord.length()-1).contains(".*" + String.valueOf(symb[z]) + ".*"))) {
 						
-						Extra(i, splt,symb[z], "right");
+						Extra(i, splt, symb[z], "right");
 						
 					} else if (currentWord.substring(0,1).equals(String.valueOf(symb[z])) && currentWord.substring(1, currentWord.length()).contains( ".*" + String.valueOf(symb[z]) + ".*")) {
 						
-						Extra(i, splt,symb[z], "midle-left");
+						Extra(i, splt, symb[z], "midle-left");
 						
 					} else if(currentWord.substring(currentWord.length()-1,currentWord.length()).equals(String.valueOf(symb[z])) && currentWord.substring(0,currentWord.length()-1).contains(".*" + String.valueOf(symb[z]) + ".*") ) {
 						
-						Extra(i, splt,symb[z], "midle-right");
+						Extra(i, splt, symb[z], "midle-right");
+						
+						
+						
+						
+						//LAHTOS
+						
 						
 					} else if(currentWord.substring(0,1).equals(String.valueOf(symb[z])) && currentWord.substring(1,currentWord.length()-1).equals(String.valueOf(symb[z]))) {
 						
-						Extra(i, splt,symb[z], "left-right");
+						Extra(i, splt, symb[z], "left-right");
 						
 					} else if(currentWord.substring(0,1).equals(String.valueOf(symb[z])) && currentWord.substring(currentWord.length()-1,currentWord.length()).equals(String.valueOf(symb[z]))) {
 						
-						Extra(i, splt,symb[z], "left-right");
+						Extra(i, splt, symb[z], "left-right");
 						
 					} else {
 						
-						Extra(i, splt,symb[z], "everywhere");
+						Extra(i, splt, symb[z], "everywhere");
 					}
 					break; 
 				}
@@ -146,8 +161,5 @@ public class TextSplit {
 			list.add(String.valueOf(containedCharacter));
 		}
 		return list;		
-	}
-
-		
-	
+	}	
 }

@@ -1,7 +1,5 @@
 package dictionary;
 
-import java.util.Scanner;
-
 import Comparison.RunComparison;
 import audio.RunIou;
 import suggestion.Suggestion;
@@ -13,10 +11,29 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * Class Comparison contains the apropriate methods that are needed in the 
+ * creation of the dictionary that is of the same language. 
+ * as the txt file given for correction
+ * version 0.1 dec 2 2017 
+ * Author Antonis Liadopoulos(AM:8160060)
+ */
 
 public class Dictionary_Creator {
+	/** The keys of this map are
+	 *  comprised of the first letter of the dictionary word and the number of the row the word
+	 *  is located at.
+	 */
 	public static final Map<String, String> dic1 = new HashMap<String, String>();
+	/** The following map is used to save the percentage in which the dictionary word is similar
+	 *  to the given text word. In order to make the search easier a map with keys that are the 
+	 *  dictionary words is essential.
+	 */
 	public static final Map<String, Float> dic2 = new HashMap<String, Float>();
+	/** The following map is used to save the number of words in the dictionary in each letter.
+	 *  This map was created in order to parse throw the dic1 map starting by a specified letter.
+	 *  This maps value is a two dimentiona array cntaining the first an last row eich letter is found.
+	 */
 	public static Map<String, Integer[]>  numberOfWords = new HashMap<String, Integer[]>();
 
 	public static String[] latinLetters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -65,13 +82,6 @@ public class Dictionary_Creator {
 		}else {
 			fillMap(greek);
 		}
-	}
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("give language");
-		String language = sc.nextLine();
-		sc.close();
-		createDictionary(language);
 	}
 	public static boolean opperateDictionary(String  givenWord) {
 		Boolean answer = false; 

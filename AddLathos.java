@@ -12,4 +12,4 @@ public class AddLathos {
 	}
 }
 
-//Ousiastika i set xrisimopiite gia na kamei update to excisting word me ti leksi Lathos dipla tou,xoris na ayksanetai h lista.
+//Ousiastika i set xrisimopiitfghjle gia na kamei update to excisting word me ti leksi Lathos dipla tou,xoris na ayksanetai h lista.

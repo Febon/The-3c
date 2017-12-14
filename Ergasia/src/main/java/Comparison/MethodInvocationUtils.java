@@ -3,24 +3,24 @@ package Comparison;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
-import javax.tools.FileObject;
-import javax.tools.ForwardingJavaFileManager;
-import javax.tools.SimpleJavaFileObject;
 
 /**
  * Utility methods not directly related to the RuntimeCompiler
  */
 class MethodInvocationUtils {
 	/**
-	 * Utility method to invoke the first static method in the given
-	 * class that can accept the given parameters.
+	 * Utility method to invoke the first static method in the given class that can
+	 * accept the given parameters.
 	 *
-	 * @param c The class
-	 * @param methodName The method name
-	 * @param args The arguments for the method call
+	 * @param c
+	 *            The class
+	 * @param methodName
+	 *            The method name
+	 * @param args
+	 *            The arguments for the method call
 	 * @return The return value of the method call
-	 * @throws RuntimeException If either the class or a matching method
-	 * could not be found
+	 * @throws RuntimeException
+	 *             If either the class or a matching method could not be found
 	 */
 	public static Object invokeStaticMethod(Class<?> c, String methodName, Object... args) {
 		Method m = findFirstMatchingStaticMethod(c, methodName, args);
@@ -29,37 +29,31 @@ class MethodInvocationUtils {
 		}
 		try {
 			return m.invoke(null, args);
-		}
-		catch (IllegalAccessException e)
-		{
+		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e);
-		}
-		catch (IllegalArgumentException e)
-		{
+		} catch (IllegalArgumentException e) {
 			throw new RuntimeException(e);
-		}
-		catch (InvocationTargetException e)
-		{
+		} catch (InvocationTargetException e) {
 			throw new RuntimeException(e);
-		}
-		catch (SecurityException e)
-		{
+		} catch (SecurityException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	/**
-	 * Utility method to find the first static method in the given
-	 * class that has the given name and can accept the given
-	 * arguments. Returns <code>null</code> if no such method
-	 * can be found.
+	 * Utility method to find the first static method in the given class that has
+	 * the given name and can accept the given arguments. Returns <code>null</code>
+	 * if no such method can be found.
 	 *
-	 * @param c The class
-	 * @param methodName The name of the method
-	 * @param args The arguments
+	 * @param c
+	 *            The class
+	 * @param methodName
+	 *            The name of the method
+	 * @param args
+	 *            The arguments
 	 * @return The first matching static method.
 	 */
-	private static Method findFirstMatchingStaticMethod(Class<?> c, String methodName, Object ... args) {
+	private static Method findFirstMatchingStaticMethod(Class<?> c, String methodName, Object... args) {
 		Method methods[] = c.getDeclaredMethods();
 		for (Method m : methods) {
 			if (m.getName().equals(methodName) && Modifier.isStatic(m.getModifiers())) {
@@ -73,18 +67,19 @@ class MethodInvocationUtils {
 	}
 
 	/**
-	 * Returns whether the given arguments are assignable to the
-	 * respective types
+	 * Returns whether the given arguments are assignable to the respective types
 	 *
-	 * @param types The types
-	 * @param args The arguments
+	 * @param types
+	 *            The types
+	 * @param args
+	 *            The arguments
 	 * @return Whether the arguments are assignable
 	 */
-	private static boolean areAssignable(Class<?> types[], Object ...args) {
+	private static boolean areAssignable(Class<?> types[], Object... args) {
 		if (types.length != args.length) {
 			return false;
 		}
-		for (int i=0; i<types.length; i++) {
+		for (int i = 0; i < types.length; i++) {
 			Object arg = args[i];
 			Class<?> type = types[i];
 			if (arg != null && !type.isAssignableFrom(arg.getClass())) {

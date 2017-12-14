@@ -1,5 +1,5 @@
 # Ruby is our language as asciidoctor is a ruby gem.
-lang: ruby
+lang: java
 before_install:
   - sudo apt-get install pandoc
   - gem install asciidoctor

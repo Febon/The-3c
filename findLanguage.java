@@ -1,7 +1,3 @@
-/*
-@authors Marios Zeniou George Triantafyllou
-*/
-
 public class findLanguage{
 	TextSplit te = new TextSplit();
 	int words = te.arrayLength();

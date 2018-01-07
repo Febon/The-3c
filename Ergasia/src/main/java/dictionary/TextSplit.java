@@ -44,7 +44,7 @@ public class TextSplit {
 		Arrays.sort(symb);
 		
 		
-		//LATHOS
+		//LATHOS ( the mistake probably is that we dont consider the fact that trere migth be more than one kind of symbon in a string
 		
 		for (int i = 0; i <textForCorrection.size(); i++) {
 			for(int z = 0; z < symb.length; z++) {

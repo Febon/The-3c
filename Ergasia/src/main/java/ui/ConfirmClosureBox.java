@@ -9,6 +9,7 @@ import javafx.geometry.*;
 
 public class ConfirmClosureBox {
 	static boolean confirmationAnswer;
+	@SuppressWarnings("restriction")
 	public static boolean display(String title, String message) {
 		Stage closureStage = new Stage();
 

@@ -25,6 +25,7 @@ import javax.tools.ToolProvider;
  * Utility class for compiling classes whose source code is given as strings,
  * in-memory, at runtime, using the JavaCompiler tools.
  */
+@SuppressWarnings("restriction")
 public class RuntimeCompiler {
 	/**
 	 * The Java Compiler

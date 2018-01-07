@@ -1,4 +1,4 @@
-package textSplit;
+package dictionary;
 
 /**
  *TextSplit
@@ -7,10 +7,12 @@ package textSplit;
  */
 
 import java.util.Map;
+
+import Comparison.Suggestion;
+
 import java.util.List;
 import java.util.Arrays;
 import java.util.HashMap;
-import suggestion.Suggestion;
 
 /**
  *class TextSplit reads text from user and splits it into words
@@ -37,7 +39,7 @@ public class TextSplit {
 		for (int i=0; i<a.length; i++) {
 
 			textForCorrection.put(i,a[i].toLowerCase());
-			correctedText.put(a[i], new Suggestion(a[i].toLowerCase(), null, null, null));
+			correctedText.put(a[i], new Suggestion(a[i].toLowerCase(), null));
 		}
 		Arrays.sort(symb);
 		
@@ -136,7 +138,7 @@ public class TextSplit {
 		}
 		for(int i = pointer;i < array.length + extraSpace; i++) {
 			textForCorrection.put(i,array[i]);
-			correctedText.put(array[i], new Suggestion(array[i], null, null, null));
+			correctedText.put(array[i], new Suggestion(array[i], null));
 		}
 	}
 	

@@ -1,4 +1,4 @@
-package encoding_detector;
+package dictionary;
 import java.io.FileInputStream;
 
 import org.mozilla.universalchardet.UniversalDetector;

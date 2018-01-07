@@ -1,8 +1,8 @@
 package the_3c;
 
 import dictionary.Dictionary_Creator;
-import textSplit.TextSplit;
-import encoding_detector.Encoding_Detector;
+import dictionary.Encoding_Detector;
+import dictionary.TextSplit;
 public class Main {
 
 	public static void main(String[] args) {
@@ -20,7 +20,11 @@ public class Main {
 			Dictionary_Creator.createDictionary("English");	
 		}
 		for (int i = 0; i <TextSplit.textForCorrection.size(); i++) {
-			Dictionary_Creator.opperateDictionary(TextSplit.textForCorrection.get(i));
+			if (i > 0) {
+				Dictionary_Creator.opperateDictionary(null, TextSplit.textForCorrection.get(i));
+			} else {
+				Dictionary_Creator.opperateDictionary(TextSplit.textForCorrection.get(i-1), TextSplit.textForCorrection.get(i));
+			}
 		}
 		
 			

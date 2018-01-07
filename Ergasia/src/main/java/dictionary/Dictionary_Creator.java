@@ -1,9 +1,8 @@
 package dictionary;
 
 import Comparison.RunComparison;
+import Comparison.Suggestion;
 import audio.RunIou;
-import suggestion.Suggestion;
-import textSplit.TextSplit;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -32,7 +31,7 @@ public class Dictionary_Creator {
 	public static final Map<String, Float> dic2 = new HashMap<String, Float>();
 	/** The following map is used to save the number of words in the dictionary in each letter.
 	 *  This map was created in order to parse throw the dic1 map starting by a specified letter.
-	 *  This maps value is a two array containing the first an last row eich letter is found.
+	 *  This maps value is a two array containing the first an last row each letter is found.
 	 */
 	public static Map<String, Integer[]>  numberOfWords = new HashMap<String, Integer[]>();
 
@@ -80,7 +79,7 @@ public class Dictionary_Creator {
 			fillMap(greek);
 		}
 	}
-	public static boolean opperateDictionary(String  givenWord) {
+	public static boolean opperateDictionary(String previous, String  givenWord) {
 		Boolean answer = false; 
 		if(!(TextSplit.symbols.contains(givenWord.charAt(0)))) {
 			answer = RunComparison.totalComparison(givenWord);
@@ -92,11 +91,13 @@ public class Dictionary_Creator {
 					percentage = RunComparison.partialComparison (givenWord, dic1.get(letter + i));
 					dic2.put(letter + i, percentage);
 				}
-				String[] suggest = Suggestion.findSuggestions(dic2, letter, numberOfWords.get(letter)[0] , numberOfWords.get(letter)[1]);
-				TextSplit.correctedText.get(givenWord).setSuggestion1(suggest[0]);
-				TextSplit.correctedText.get(givenWord).setSuggestion2(suggest[1]);;
-				TextSplit.correctedText.get(givenWord).setSuggestion3(suggest[2]);;
-	
+				String[] suggest = Suggestion.findSuggestions(letter, numberOfWords.get(letter)[0], numberOfWords.get(letter)[1], givenWord.length() - 1);
+				if(previous.equals(".")) {
+					for(int i = 0; i < suggest.length; i++) {
+						suggest[i] = suggest[i].substring(0, 1).toUpperCase() + suggest[i].substring(1);
+					}
+				}
+				TextSplit.correctedText.get(givenWord).setSuggestions(suggest);
 			}
 		}
 		return answer;

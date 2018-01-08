@@ -3,11 +3,11 @@ package dictionary;
 /**
  * class findLanguage contains a method used to recognise the language used in the text. This method is mainly a back up plan
  * version 0.2 Jan 04 2018
- * Authors: Giorgos Triantafyllou(AM:8160131) Îœarios Zeniou (AM:8160030)
+ * Authors: Giorgos Triantafyllou(AM:8160131)
  */
 public class findLanguage{
 	private static String alphabetEn[] = {"a","b","c","d","e","f","g","h","i","j'","k","l","m","n","o","p","q","r","s","t'","u","v","w","x","y","z"};
-	private static String alphabetGr[] = {"Ã¡", "Ã¢", "Ã£", "Ã¤", "Ã¥", "Ã¦", "Ã§", "Ã¨", "Ã©", "Ãª", "Ã«", "Ã¬", "Ã­", "Ã®", "Ã¯", "Ã°", "Ã±", "Ã³", "Ã´", "Ãµ", "Ã¶", "Ã·", "Ã¸", "Ã¹", "Ãœ", "Ã", "ÃŸ", "Ã¼", "Ã", "Ã½", "Ã¾", "Ãº", "Ã€", "Ã»", "Ã ", "Ã²"};
+	private static String alphabetGr[] = {"á", "â", "ã", "ä", "å", "æ", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ğ", "ñ", "ó", "ô", "õ", "ö", "÷", "ø", "ù", "Ü", "İ", "ß", "ü", "Ş", "ı", "ş", "ú", "À", "û", "à", "ò"};
 
 	public static String findLang(){
 		String letter= TextSplit.textForCorrection.get((int)Math.random() * TextSplit.textForCorrection.size()).substring(0, 1);

@@ -3,6 +3,12 @@ import java.io.FileInputStream;
 
 import org.mozilla.universalchardet.UniversalDetector;
 
+/**
+ *class Encoding_Detector reads text from user and splits it into words
+ *@version 1.0 29 Oct 2017
+ *@author Kostantina Karagianni
+ */
+
 public class Encoding_Detector {
 	 public static String encoding_Detector(String path) throws java.io.IOException {
 		 byte[] buf = new byte[4096];
@@ -25,10 +31,7 @@ public class Encoding_Detector {
 			return encoding;
 		 } else {
 			return null;
-		 }
-		
-		
-			
+		 }	
 	 }
 	 
 }

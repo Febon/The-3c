@@ -1,13 +1,21 @@
 package the_3c;
 
+
 import dictionary.Dictionary_Creator;
 import dictionary.Encoding_Detector;
 import dictionary.TextSplit;
+import ui.MainGUI;
 public class Main {
 
+	@SuppressWarnings("restriction")
 	public static void main(String[] args) {
-		String txt = null;
-		TextSplit.splitIntoWords(txt);
+		
+		MainGUI.launch(args);
+		String filePath = null;
+		//String filePath = MainGUI.getFilePath;
+		TextSplit.splitIntoWords(filePath);
+		String txt = TextSplit.textForCorrection.get((int)Math.random() * TextSplit.textForCorrection.size());
+		
 		String languageCode = null;
 		try {
 			languageCode = Encoding_Detector.encoding_Detector(txt);

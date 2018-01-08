@@ -12,9 +12,9 @@ import java.io.FileReader;
 
 /**
  * Class Comparison contains the apropriate methods that are needed in the 
- * creation of the dictionary that is of the same language. 
+ * creation of the dictionary that is of the same language 
  * as the txt file given for correction
- * version 0.1 dec 2 2017 
+ * version 0.2 Jan 7 2018 
  * Author Antonis Liadopoulos(AM:8160060)
  */
 

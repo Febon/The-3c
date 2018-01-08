@@ -47,15 +47,18 @@ public class Suggestion {
 	public static String[] findSuggestions(String firstLetter, int start , int finish, int numberOfSuggestions){
 		Map<String, String> temporaryDic1 = Dictionary_Creator.dic1;
 		String[] a = new String[numberOfSuggestions];
-		Map<String, Float> temporaryDic = getRange(Dictionary_Creator.dic2, start , finish, firstLetter);
+		Map<String, Float> temporaryDic2 = getRange(Dictionary_Creator.dic2, start , finish, firstLetter);
 		for(int i = 0; i < numberOfSuggestions; i++) {
 			Float max = (float)0;
-			for(int j = start; i < finish; i++) {
-				if(temporaryDic.get(firstLetter + i) > max) {
-					max = temporaryDic.get(firstLetter + i);
-					a[j] = temporaryDic1.get(firstLetter + i);
+			String key = null;
+			for(int j = start; j < finish; j++) {
+				if(temporaryDic2.get(firstLetter + i) > max) {
+					max = temporaryDic2.get(firstLetter + j);
+					a[i] = temporaryDic1.get(firstLetter + j);
+					key = firstLetter + j;
 				}
 			}
+			temporaryDic2.remove(key);
 		}
 		
 		return a;

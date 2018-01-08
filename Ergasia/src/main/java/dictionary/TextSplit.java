@@ -11,6 +11,10 @@ import java.util.Map;
 import Comparison.Suggestion;
 
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -32,19 +36,24 @@ public class TextSplit {
 	public static Character[] symb = {',','.','<','>','?',':',';','\'','"','(',')','{','}','[',']','/','\\','!','@','%','$','#','&','*','~','-','_','`','+','=','0','1','2','3','4','5','6','7','8','9'};
 	public static List<Character> symbols = Arrays.asList(symb);
 	
-	public static void splitIntoWords(String txt){
-
-		String[] a = txt.split(" ");
-
-		for (int i=0; i<a.length; i++) {
-
-			textForCorrection.put(i,a[i].toLowerCase());
-			correctedText.put(a[i], new Suggestion(a[i].toLowerCase(), null));
-		}
+	public static void splitIntoWords(String filePath){
+		
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader( new FileInputStream(filePath)));
+		    String line;
+		    int key=0;
+		    while ((line = br.readLine()) != null) {
+				textForCorrection.put(key,line.toLowerCase());
+				correctedText.put(textForCorrection.get(key), new Suggestion(textForCorrection.get(key).toLowerCase(), null));
+				key++;
+		    }
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 		Arrays.sort(symb);
 		
-		
-		//LATHOS ( the mistake probably is that we dont consider the fact that trere migth be more than one kind of symbon in a string
+		//MISTAKEN ( the mistake probably is that we don't consider the fact that there might be more than one kind of symbol in a string
 		
 		for (int i = 0; i <textForCorrection.size(); i++) {
 			for(int z = 0; z < symb.length; z++) {

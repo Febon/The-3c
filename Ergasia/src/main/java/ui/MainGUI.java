@@ -22,9 +22,9 @@ public class MainGUI extends Application {
 	Button button;
 	Scene scene1 , scene2;
 	BorderPane layout;
-	public static void main(String[] args) {
-		launch(args);
-	}
+	//public static void main(String[] args) {
+	//	launch(args);
+	//}
 
 	private void closeProgram() {
 		Boolean answer = ConfirmClosureBox.display("The 3 C's","Sure you want to exit?");

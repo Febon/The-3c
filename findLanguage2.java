@@ -1,8 +1,7 @@
-/*Copyright 2017 Triantafylloy-Zenioy/team java autocorrect*/
 public class findLanguage2 {
 	findLanguage fl = new findLanguage();
 	String alphabeten[] = {"a","b","c","d","e","f","g","h","i","j'","k","l","m","n","o","p","q","r","s","t'","u","v","w","x","y","z"};
-	String alphabetgr[] = {"Ã¡","Ã¢","Ã£","Ã¤","Ã¥","Ã¦","Ã§","Ã¨","Ã©","Ãª","Ã«","Ã¬","Ã­","Ã®","Ã¯","Ã°","Ã±","Ã³","Ã´","Ãµ","Ã¶","Ã·","Ã¸","Ã¹","Ãœ","Ã","ÃŸ","Ã¼","Ã","Ã½","Ã¾","Ãº","Ã»","Ã²"};
+	String alphabetgr[] = {"á","â","ã","ä","å","æ","ç","è","é","ê","ë","ì","í","î","ï","ğ","ñ","ó","ô","õ","ö","÷","ø","ù","Ü","İ","ß","ü","Ş","ı","ş","ú","û","ò"};
 	public int fLang(int j){
 		String letter= fl.getFirtLetter(j);
 		int i=0;

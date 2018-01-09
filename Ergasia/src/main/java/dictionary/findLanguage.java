@@ -1,3 +1,4 @@
+/*Copyright 2017 Triantafylloy-Zenioy/team java autocorrect*/
 package dictionary;
 
 /**
@@ -7,7 +8,7 @@ package dictionary;
  */
 public class findLanguage{
 	private static String alphabetEn[] = {"a","b","c","d","e","f","g","h","i","j'","k","l","m","n","o","p","q","r","s","t'","u","v","w","x","y","z"};
-	private static String alphabetGr[] = {"á", "â", "ã", "ä", "å", "æ", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ğ", "ñ", "ó", "ô", "õ", "ö", "÷", "ø", "ù", "Ü", "İ", "ß", "ü", "Ş", "ı", "ş", "ú", "À", "û", "à", "ò"};
+	private static String alphabetGr[] = {"Ã¡", "Ã¢", "Ã£", "Ã¤", "Ã¥", "Ã¦", "Ã§", "Ã¨", "Ã©", "Ãª", "Ã«", "Ã¬", "Ã­", "Ã®", "Ã¯", "Ã°", "Ã±", "Ã³", "Ã´", "Ãµ", "Ã¶", "Ã·", "Ã¸", "Ã¹", "Ãœ", "Ã", "ÃŸ", "Ã¼", "Ã", "Ã½", "Ã¾", "Ãº", "Ã€", "Ã»", "Ã ", "Ã²"};
 
 	public static String findLang(){
 		String letter= TextSplit.textForCorrection.get((int)Math.random() * TextSplit.textForCorrection.size()).substring(0, 1);

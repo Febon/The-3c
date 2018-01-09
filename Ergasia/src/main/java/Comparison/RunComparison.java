@@ -82,9 +82,10 @@ public class RunComparison {
 	}
 
 	/**
-	 * This method is used to convert an int two-dimensional array int a
-	 * one-dimensional String array. Parameters: a: All the possible combination of
-	 * a words' letters in the form of a two-dimensional array.
+	 * This method is used to convert an int two-dimensional array into a
+	 * one-dimensional String array. Parameters: 
+	 * a: All the possible combination of
+	 * a words' letters in the form of a two-dimensional array. It will be later on be converted to the code of the contents of an array
 	 */
 
 	public static String[] convertIntToString(int[][] a) {
@@ -99,9 +100,9 @@ public class RunComparison {
 	}
 
 	/**
-	 * This method created a two-dimentional array containing all the possible
-	 * compinations of a words letters keeping the letters hierarchy. Parameters:
-	 * length: An int variable containing the length of the word whose letetr
+	 * This method created a two-dimensional array containing all the possible
+	 * combinations of a words letters keeping the letters hierarchy. Parameters:
+	 * length: An into variable containing the length of the word whose letter
 	 * combinations we want to create.
 	 */
 

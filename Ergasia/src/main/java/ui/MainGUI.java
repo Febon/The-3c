@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import the_3c.Main;
 
 @SuppressWarnings("restriction")
 public class MainGUI extends Application {
@@ -22,9 +23,9 @@ public class MainGUI extends Application {
 	Button button;
 	Scene scene1 , scene2;
 	BorderPane layout;
-	//public static void main(String[] args) {
-	//	launch(args);
-	//}
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 	private void closeProgram() {
 		Boolean answer = ConfirmClosureBox.display("The 3 C's","Sure you want to exit?");
@@ -96,7 +97,9 @@ public class MainGUI extends Application {
 				File file = chooser.showOpenDialog(primaryStage);
 				if (file != null) {
 					String fileAsString = file.toString();
-					chosenFP.setText("Chosen file is in path: " +fileAsString);
+					Main.StartCorrection(fileAsString);
+					chosenFP.setText("Chosen file is in path: " + fileAsString);
+					
 				} else {
 					chosenFP.setText(null);
 				}

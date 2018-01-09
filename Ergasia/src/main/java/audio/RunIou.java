@@ -10,7 +10,11 @@ import java.io.FileInputStream;
  */
 
 public class RunIou {
-	
+	/*public static void main(String[] args) {
+		for(int i = 0; i<4 ; i++) {
+			playIou();
+		}
+	}*/
 	/**
 	 * This method is used to run the mp3 contained in the specified file path usind
 	 * classes contained in the javazoom library

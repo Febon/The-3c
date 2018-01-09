@@ -1,3 +1,4 @@
+/*Copyright 2017 Triantafylloy-Zenioy/team java autocorrect*/
 public class findLanguage{
 	TextSplit te = new TextSplit();
 	int words = te.arrayLength();

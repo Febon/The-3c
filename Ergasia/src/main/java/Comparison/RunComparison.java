@@ -82,7 +82,7 @@ public class RunComparison {
 	}
 
 	/**
-	 * This method is used to convert an int two-dimensional array into a
+	 * This method is used to convert a two-dimensional int array into a
 	 * one-dimensional String array. Parameters: 
 	 * a: All the possible combination of
 	 * a words' letters in the form of a two-dimensional array. It will be later on be converted to the code of the contents of an array

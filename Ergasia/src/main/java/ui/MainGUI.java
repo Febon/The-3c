@@ -34,10 +34,9 @@ public class MainGUI extends Application {
 			System.out.println("Thanks for trusting us by using our program.");
 		}
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
 			Label label1 = new Label("Welcome to our little magic world,wut?");
 			Label label2 = new Label("Above this text you can locate your file's path");
 			Label label3 = new Label("Since you are here though let -The Three C's- handle it, do their magic for you and correct any possible mistakes.");
@@ -97,14 +96,20 @@ public class MainGUI extends Application {
 				File file = chooser.showOpenDialog(primaryStage);
 				if (file != null) {
 					String fileAsString = file.toString();
-					Main.StartCorrection(fileAsString);
 					chosenFP.setText("Chosen file is in path: " + fileAsString);
-					
+					try {
+						Main.StartCorrection(fileAsString);
+						Thread.sleep(1000);
+
+					}catch(Exception e1) {
+						e1.printStackTrace();
+					}
+
 				} else {
 					chosenFP.setText(null);
 				}
 			});
-			
+
 			
 			VBox layout1 = new VBox(20);
 			layout1.getChildren().addAll(label1, proceedButton, exitButton);

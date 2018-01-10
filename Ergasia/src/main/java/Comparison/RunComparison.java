@@ -45,17 +45,19 @@ public class RunComparison {
 	public static float partialComparison(String givenWord, String vocabularyWord) {
 		List<String> ConditionList = new ArrayList<String>();
 		String word1, word2;
+		System.out.println(givenWord + " " + vocabularyWord );
 		if (givenWord.length() > vocabularyWord.length()) {
 			word1 = givenWord;
 			word2 = vocabularyWord;
 		} else {
 			word2 = givenWord;
 			word1 = vocabularyWord;
-
 		}
 		String[] SplitWord2 = methodForSpliting(word2);
-		ConditionList = creatingConditionList(SplitWord2.length);
+		ConditionList = creatingConditionList(word2.length());
 		float precision = 0;
+		System.out.println(word2);
+
 		int[][] LetterCombinations = createLetterCombinations(SplitWord2.length);
 		String[] CombinationArray = convertIntToString(LetterCombinations);
 		String check = "false";
@@ -90,6 +92,9 @@ public class RunComparison {
 
 	public static String[] convertIntToString(int[][] a) {
 		String[] b = new String[a.length];
+		for (int i = 0; i < a.length; i++) {
+			b[i] = "";
+		}
 		for (int i = 0; i < a.length; i++) {
 			b[i] = "" + a[i][0];
 			for (int j = 1; j < a[i].length; j++) {

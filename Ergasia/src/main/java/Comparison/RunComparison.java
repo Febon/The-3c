@@ -57,22 +57,32 @@ public class RunComparison {
 		ConditionList = creatingConditionList(word2.length());
 		float precision = 0;
 		System.out.println(word2);
-
+		String[] CombinationArray = new String[word2.length()];
 		int[][] LetterCombinations = createLetterCombinations(SplitWord2.length);
-		String[] CombinationArray = convertIntToString(LetterCombinations);
+		if(word2.length() != 1) {
+			CombinationArray = convertIntToString(LetterCombinations);
+		}else {
+			CombinationArray[0] = "1";
+		}
 		String check = "false";
 		String flag = "false";
 		int i = 0;
-		if ((creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length - 2), word2, word1, CombinationArray[i]) + "").equals("true") && word1.length() != word2.length()) {
-			check = "true";
-			flag = "true";
-
-		}
-		while (i < SplitWord2.length && check.equals("false")) {
-			Object a = creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length - 2), word2, word1,
-					CombinationArray[i]);
+		if(word2.length() != 1) {
+			if ((creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length - 2), word2, word1, CombinationArray[i]) + "").equals("true") && word1.length() != word2.length()) {
+				check = "true";
+				flag = "true";
+	
+			}
+			while (i < SplitWord2.length && check.equals("false")) {
+				Object a = creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length - 2), word2, word1,
+						CombinationArray[i]);
+				check = a + "";
+				i++;
+			}
+		} else {
+			Object a = creatingComparisonConditionMethod(ConditionList.get(SplitWord2.length - 1), word2, word1,
+					CombinationArray[0]);
 			check = a + "";
-			i++;
 		}
 		if (check.equals("true") && flag.equals("false")) {
 			return ((float) word2.length() - 1) / (float) word1.length();
@@ -147,7 +157,7 @@ public class RunComparison {
 	 * Parameters: comparedCombination : A string variable used in the
 	 * runComparisonCondition in which it's compared with the variable named "word"
 	 * through the usage of the .matches() method. word1: A word which will be
-	 * compared as a whole. word2: A word which will be compared as a compination o
+	 * compared as a whole. word2: A word which will be compared as a combination o
 	 * letters. combination: A combination of array indexes in the form of a String.
 	 */
 
@@ -179,16 +189,16 @@ public class RunComparison {
 	public static List<String> creatingConditionList(int length) {
 		List<String> ConditionList = new ArrayList<String>();
 		ConditionList.add("\".*\" +  Comparison.methodForSpliting(word2)[combination[0");
-		for (int i = 1; i < length - 1; i++) {
-			ConditionList.add(ConditionList.get(i - 1) + "]] + " + ConditionList.get(0) + " + " + i);
-		}
+		if(length != 1 ) {
 
-		for (int i = 0; i < length - 1; i++) {
-			ConditionList.set(i, ConditionList.get(i) + "]] + \".*\"");
-		}
-		ConditionList.add("\".*\" +  Comparison.methodForSpliting(word2)[0");
-		for (int i = 1; i < length - 1; i++) {
-			ConditionList.set(length - 1, (ConditionList.get(length - 1) + "]] + " + ConditionList.get(0) + " + " + i));
+			for (int i = 1; i < length ; i++) {
+				ConditionList.add(ConditionList.get(i - 1) + "]] + " + ConditionList.get(0) + " + " + i);
+			}
+			for (int i = 0; i < length ; i++) {
+				ConditionList.set(i, ConditionList.get(i) + "]] + \".*\"");
+			}
+		} else {
+			ConditionList.set(0, ConditionList.get(0)+ "]] ");
 		}
 
 		return ConditionList;

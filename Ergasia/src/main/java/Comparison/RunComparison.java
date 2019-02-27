@@ -45,7 +45,6 @@ public class RunComparison {
 	public static float partialComparison(String givenWord, String vocabularyWord) {
 		List<String> ConditionList = new ArrayList<String>();
 		String word1, word2;
-		System.out.println(givenWord + " " + vocabularyWord );
 		if (givenWord.length() > vocabularyWord.length()) {
 			word1 = givenWord;
 			word2 = vocabularyWord;
@@ -56,7 +55,6 @@ public class RunComparison {
 		String[] SplitWord2 = methodForSpliting(word2);
 		ConditionList = creatingConditionList(word2.length());
 		float precision = 0;
-		System.out.println(word2);
 		String[] CombinationArray = new String[word2.length()];
 		int[][] LetterCombinations = createLetterCombinations(SplitWord2.length);
 		if(word2.length() != 1) {
@@ -152,7 +150,7 @@ public class RunComparison {
 	}
 
 	/**
-	 * This method creates the apropriate code for the creation of the
+	 * This method creates the appropriate code for the creation of the
 	 * ComparisonCondition class which contains the runComparisonCondition method.
 	 * Parameters: comparedCombination : A string variable used in the
 	 * runComparisonCondition in which it's compared with the variable named "word"
@@ -164,7 +162,7 @@ public class RunComparison {
 	public static Object creatingComparisonConditionMethod(String comparedCombination, String word1, String word2,
 			String combination) {
 		String classNameA = "ComparisonCondition";
-		String codeA = "import java.util.*;" + "\n" + "public class ComparisonCondition {" + "\n"
+		String codeA = "import java.util.*;" + "\n" + "import Comparison.RunComparison;" + "\n" + "public class ComparisonCondition {" + "\n"
 				+ "    public static Boolean runComparisonCondition(String word2) {" + "\n"
 				+ "		 int[] combination = {" + combination + "};" + "\n" + "		 String word = \"" + word1 + "\";"
 				+ "\n" + "        return word.matches(" + comparedCombination + ");" + "\n" + "    }" + "\n" + "}"
@@ -188,7 +186,7 @@ public class RunComparison {
 
 	public static List<String> creatingConditionList(int length) {
 		List<String> ConditionList = new ArrayList<String>();
-		ConditionList.add("\".*\" +  Comparison.methodForSpliting(word2)[combination[0");
+		ConditionList.add("\".*\" +  RunComparison.methodForSpliting(word2)[combination[0");
 		if(length != 1 ) {
 
 			for (int i = 1; i < length ; i++) {
